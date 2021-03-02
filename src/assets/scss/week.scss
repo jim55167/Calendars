@@ -1,0 +1,14 @@
+.week{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 18px;
+  background-color: #fff;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  color: $gray-800;
+}
+.week,
+.grid{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}

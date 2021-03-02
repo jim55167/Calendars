@@ -1,0 +1,15 @@
+.selected-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.date-selected {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  color: $gray-800;
+}
+.date-selected > * {
+  cursor: pointer;
+  user-select: none;
+}

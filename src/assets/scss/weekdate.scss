@@ -1,0 +1,5 @@
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* grid-template-columns: repeat({次數}, {格線...} | {格線...}) | {格線...}; */
+}
