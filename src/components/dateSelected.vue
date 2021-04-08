@@ -10,7 +10,6 @@
 
 <script>
 import dayjs from 'dayjs'
-
 export default {
   name: 'pointer',
   props: {
@@ -23,10 +22,8 @@ export default {
       required: true
     }
   },
-
   methods: {
     selectedPre () {
-      console.log(this)
       const newDate = dayjs(this.selectedDate).subtract(1, 'month')
       this.$emit('dateSelected', newDate)
     },

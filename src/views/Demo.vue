@@ -45,25 +45,25 @@ export default {
   },
   methods: {
     getWeekday (date) {
+      // console.log(dayjs(date).weekday())
       return dayjs(date).weekday()
     },
     selDate (newDate) {
       this.selectedDate = newDate
-      console.log(newDate)
     }
   },
   computed: {
     today () {
       return dayjs().format('YYYY-MM-DD')
     },
-    month () {
-      return Number(this.selectedDate.format('M'))
+    getMonth () {
+      return dayjs(this.selectedDate).daysInMonth()
     },
     year () {
       return Number(this.selectedDate.format('YYYY'))
     },
-    getMonth () {
-      return dayjs(this.selectedDate).daysInMonth()
+    month () {
+      return Number(this.selectedDate.format('M'))
     },
     currentDays () {
       // console.log(this.selectedDate)
@@ -76,11 +76,11 @@ export default {
     },
     nextmonthDay () {
       const nextWeek = this.getWeekday(`${this.year}-${this.month}-${this.currentDays.length}`)
-      // console.log('月底星期 :', nextWeek)
+      // console.log('每月的最後一天是星期 :', nextWeek)
       const nextMonth = dayjs(`${this.year}-${this.month}`).add(1, 'month')
       // console.log(nextMonth)
       const nextOfmonth = nextWeek ? 7 - nextWeek : nextWeek
-      // console.log('剩餘 :', nextOfmonth, '格')
+      // console.log('下個月的0可見天數 :', nextOfmonth)
       return [...Array(nextOfmonth)].map((day, index) => {
         return {
           date: dayjs(`${nextMonth.year()}-${nextMonth.month() + 1}-${index + 1}`).format('YYYY-MM-DD'),
@@ -90,12 +90,12 @@ export default {
     },
     premonthDate () {
       const firstWeek = this.getWeekday(this.currentDays[0].date)
-      // console.log('星期 :', firstWeek)
+      console.log('每月第一個工作日是星期 :', firstWeek)
       const prevMonth = dayjs(`${this.year}-${this.month}`).subtract(1, 'month')
       const lastMonth = firstWeek ? firstWeek - 1 : 6
-      // console.log('空 :', lastMonth, '格')
+      console.log('上個月的可見天數 :', lastMonth)
       const prefirstDay = dayjs(this.currentDays[0].date).subtract(lastMonth, 'day').date()
-      // console.log('第一格日期 :', prefirstDay, '號')
+      console.log('當月第一個星期一是 :', prefirstDay, '號')
       return [...Array(lastMonth)].map((day, index) => {
         return {
           date: dayjs(`${prevMonth.year()}-${prevMonth.month() + 1}-${prefirstDay + index}`).format('YYYY-MM-DD'),

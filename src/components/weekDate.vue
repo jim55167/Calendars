@@ -10,7 +10,6 @@
 const week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 export default {
   name: 'weekDate',
-
   computed: {
     weekDates () {
       return week

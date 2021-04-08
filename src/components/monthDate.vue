@@ -24,10 +24,8 @@ export default {
       default: false
     }
   },
-
   computed: {
     isTag () {
-      // console.log(this.day.date)
       return dayjs(this.day.date).format('D')
     }
   }
